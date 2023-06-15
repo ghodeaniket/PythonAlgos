@@ -1,0 +1,16 @@
+'''
+Given an array and a target number, 
+find the indices of the two values from the array that sum up to the given target number.
+'''
+def two_sum(nums, target):
+    num_dict = {}
+    for i, num in enumerate(nums):
+        if target - num in num_dict:
+            return [num_dict[target - num], i]
+        num_dict[num] = i
+    return []
+
+# Test the function
+nums = [2, 7, 11, 15]
+target = 9
+print(two_sum(nums, target))
