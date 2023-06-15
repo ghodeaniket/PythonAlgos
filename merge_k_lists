@@ -1,0 +1,35 @@
+
+import heapq
+
+class LinkedListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+def merge_k_lists(lists):
+    """
+    Args:
+     lists: list[LinkedListNode_int32]
+    Returns:
+     LinkedListNode_int32
+    """
+
+    heap = []
+    
+    for j in range(len(lists)):
+        while lists[j]:
+            heapq.heappush(heap, lists[j].value)
+            lists[j] = lists[j].next
+            
+    result = LinkedListNode(0)
+    tail = None
+    
+    for j in heapq.nsmallest(len(heap), heap):
+        if not tail:
+            tail = LinkedListNode(j)
+            result.next = tail
+        else:
+            tail.next = LinkedListNode(j)
+            tail = tail.next
+            
+    return result.next
