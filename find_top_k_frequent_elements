@@ -1,0 +1,17 @@
+import collections
+import heapq
+
+def k_most_frequent(arr, k):
+    # Build a frequency map
+    count = collections.Counter(arr)
+    
+    # Build a heap of the negative values of the frequencies
+    heap = [(-freq, num) for num, freq in count.items()]
+    heapq.heapify(heap)
+    
+    # Extract the top k elements from the heap
+    return [heapq.heappop(heap)[1] for _ in range(k)]
+
+arr = [1, 2, 3, 2, 4, 3, 1]
+k = 2
+print(k_most_frequent(arr, k))  # Output: [2, 1]
