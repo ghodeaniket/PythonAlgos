@@ -1,0 +1,29 @@
+def dutch_flag_sort(balls):
+    """
+    Args:
+     balls(list_char)
+    Returns:
+     list_char
+    """
+    low, mid, high = 0, 0, len(balls) - 1
+    
+    while mid <= high:
+        if balls[mid] == "R":
+            balls[low], balls[mid] = balls[mid], balls[low]
+            low += 1
+            mid += 1
+        elif balls[mid] == "G":
+            mid += 1
+        else:
+            balls[mid], balls[high] = balls[high], balls[mid]
+            high -= 1
+    return balls
+
+# Define a list of balls
+balls = ['G', 'B', 'R', 'R', 'B', 'R', 'G']
+
+# Sort the balls using dutch flag sort
+sorted_balls = dutch_flag_sort(balls)
+
+# Print the sorted balls
+print(sorted_balls)  # Output: ['R', 'R', 'R', 'G', 'G', 'B', 'B']
