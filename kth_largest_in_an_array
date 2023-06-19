@@ -1,0 +1,28 @@
+import heapq
+
+def kth_largest_in_an_array(numbers, k):
+    """
+    Args:
+     numbers(list_int32)
+     k(int32)
+    Returns:
+     int32
+    """
+    # Convert to a max heap
+    numbers = [-num for num in numbers]
+    heapq.heapify(numbers)
+    
+    # Pop elements from the heap until we reach the kth largest
+    for _ in range(k-1):
+        heapq.heappop(numbers)
+    
+    # The top of the heap is now the kth largest element
+    return -heapq.heappop(numbers)
+
+numbers = [5, 1, 10, 3, 2]
+k = 2
+print(kth_largest_in_an_array(numbers, k))  
+
+numbers = [4, 1, 2, 2, 3]
+k = 4
+print(kth_largest_in_an_array(numbers, k))  
