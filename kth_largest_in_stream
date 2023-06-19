@@ -1,0 +1,24 @@
+import heapq
+
+def kth_largest(k, initial_stream, append_stream):
+    # Create a min heap with elements of initial stream
+    heap = []
+    for num in initial_stream:
+        heapq.heappush(heap, num)
+        # If the heap has more than k elements, remove the smallest
+        if len(heap) > k:
+            heapq.heappop(heap)
+
+    # Append elements from append stream and keep heap size equal to k
+    result = []
+    for num in append_stream:
+        # If the heap is not full yet or num is larger than the smallest in heap
+        if len(heap) < k or num > heap[0]:
+            heapq.heappush(heap, num)
+        # If the heap has more than k elements, remove the smallest
+        if len(heap) > k:
+            heapq.heappop(heap)
+        result.append(heap[0])
+  
+    # Return list of kth largest elements after each addition
+    return result
