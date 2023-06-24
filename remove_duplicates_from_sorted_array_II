@@ -1,0 +1,24 @@
+def removeDuplicates(nums):
+    #Edge Case: if the list is empty or has only one element, return it's length
+    if len(nums) < 3:
+        return len(nums)
+    
+    #Initialize two pointers
+    i = 2 #This is the pointer that iterates through the list
+    j = 2 #This is the pointer that marks the position to replace
+
+    while i < len(nums):
+        # If the current number is different from the number two positions before,
+        # it means this number can be kept without violating the "at most twice" rule
+        if nums[i] != nums[j-2]:
+            nums[j] = nums[i]
+            j += 1
+        i += 1
+
+    # Return the length of list after duplicates are removed.
+
+
+nums = [1,1,1,2,2,3]
+print(removeDuplicates(nums))
+print(nums[:len(nums)])
+        
