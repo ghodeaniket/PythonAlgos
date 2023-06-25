@@ -1,0 +1,21 @@
+def minSubArrayLen(target, nums):
+    l = 0
+    r = 0
+    s = 0
+    m = float('inf')
+    while r < len(nums):
+        while s < target and r < len(nums):
+            s += nums[r]
+            r += 1
+        while s >= target and l < len(nums):
+            if s >= target:
+                m = min(m, r-l)
+            s -= nums[l]
+            l += 1
+    if m == float('inf'):
+        return 0
+    return m
+
+print(minSubArrayLen(7,[2,3,1,2,4,3]))
+print(minSubArrayLen(4,[1,4,4]))
+print(minSubArrayLen(11,[1,1,1,1,1,1,1,1]))
