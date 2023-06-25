@@ -1,0 +1,6 @@
+def reversedWords(s):
+    return ' '.join(s.split()[::-1])
+
+print(reversedWords("the sky is blue"))
+print(reversedWords('    hello world   '))
+print(reversedWords('a good example'))
