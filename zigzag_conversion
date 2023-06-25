@@ -1,0 +1,21 @@
+def convert(s, numRows):
+    if numRows == 1 or numRows >= len(s):
+        return s
+    
+    # Initialize the string with numRows Strings
+    rows = [""] * numRows
+    cur_row = 0
+    direction = -1
+
+    for char in s:
+        rows[cur_row] += char
+        # Change dir if we are at top or bottom row
+        if cur_row == 0 or cur_row == numRows - 1:
+            direction *= -1
+        cur_row += direction
+
+    # Join all rows to get final result
+    return "".join(rows)
+
+
+print(convert('PAYPALISHIRING', 3))
