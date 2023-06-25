@@ -1,0 +1,15 @@
+def twosum(numbers, target):
+    left, right = 0, len(numbers) - 1
+    while left < right:
+        current_sum = numbers[left] + numbers[right]
+        if current_sum == target:
+            return [left + 1, right + 1]
+        elif current_sum < target:
+            left += 1
+        else:
+            right -= 1
+    return [-1, -1]
+
+print(twosum([2,7,11,15],9))
+print(twosum([2,3,4],6))
+print(twosum([-1,0],-1))
