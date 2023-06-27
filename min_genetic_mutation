@@ -1,4 +1,4 @@
-import collections
+from collections import deque
 
 def minMutation(startGene, endGene, bank):
     if endGene not in bank: return -1
